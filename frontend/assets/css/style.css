@@ -1,0 +1,390 @@
+:root {
+    --brown-primary: #6B4423;
+    --brown-dark: #4A2F1A;
+    --brown-light: #8B5A3C;
+    --cream: #F5E6D3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Top Bar */
+.top-bar {
+    font-size: 0.9rem;
+}
+
+.bg-brown {
+    background-color: var(--brown-primary) !important;
+}
+
+.text-brown {
+    color: var(--brown-primary) !important;
+}
+
+.btn-brown {
+    background-color: var(--brown-primary);
+    border-color: var(--brown-primary);
+    color: white;
+}
+
+.btn-brown:hover {
+    background-color: var(--brown-dark);
+    border-color: var(--brown-dark);
+    color: white;
+}
+
+.btn-outline-brown {
+    border-color: var(--brown-primary);
+    color: var(--brown-primary);
+}
+
+.btn-outline-brown:hover {
+    background-color: var(--brown-primary);
+    border-color: var(--brown-primary);
+    color: white;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.search-form .form-control {
+    border-radius: 25px 0 0 25px;
+    border-right: none;
+}
+
+.search-form .btn {
+    border-radius: 0 25px 25px 0;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.75rem 1rem !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--brown-primary) !important;
+}
+
+/* Hero Slider */
+.hero-slider {
+    margin-bottom: 3rem;
+}
+
+.carousel-item {
+    height: 500px;
+    background: #000;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+}
+
+/* Section Titles */
+.section-title {
+    font-weight: 700;
+    color: var(--brown-primary);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--brown-primary);
+}
+
+/* Product Card */
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.product-card img {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.hover-shadow {
+    transition: box-shadow 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Category Card */
+.category-card .card {
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.category-card:hover .card {
+    transform: translateY(-10px);
+    background-color: var(--cream);
+}
+
+.category-icon i {
+    transition: transform 0.3s;
+}
+
+.category-card:hover .category-icon i {
+    transform: scale(1.2);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+}
+
+.footer a:hover {
+    color: var(--brown-light) !important;
+}
+
+.social-links a {
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+/* Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 300px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Hover dropdown đổ xuống/rút lên mượt (desktop ≥992px) */
+@media (min-width: 992px) {
+    .navbar .dropdown-menu {
+        display: block !important;
+        /* ghi đè display:none */
+        max-height: 0;
+        /* đóng */
+        opacity: 0;
+        transform: translateY(-8px);
+        /* rút lên nhẹ khi đóng */
+        visibility: hidden;
+        overflow: hidden;
+        /* che item khi đang đóng */
+        pointer-events: none;
+        transition:
+            max-height .45s ease,
+            opacity .35s ease,
+            transform .28s ease,
+            visibility .28s ease;
+        z-index: 1050;
+        will-change: max-height, opacity, transform;
+    }
+
+    /* MỞ khi có class open-hover trên .dropdown */
+    .navbar .dropdown.open-hover>.dropdown-menu {
+        max-height: 480px;
+        /* đủ lớn cho số item của bạn */
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* (Tuỳ chọn) các item xuất hiện so-le dễ chịu */
+    .navbar .dropdown-menu>li>a.dropdown-item {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity .40s ease, transform .40s ease;
+    }
+
+    .navbar .dropdown.open-hover>.dropdown-menu>li>a.dropdown-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* nếu muốn so-le, JS sẽ set --i; bật dòng dưới: */
+    /* .navbar .dropdown.open-hover > .dropdown-menu > li > a.dropdown-item { transition-delay: calc(var(--i, 0) * 45ms); } */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .navbar .dropdown-menu,
+        .navbar .dropdown-menu>li>a.dropdown-item {
+            transition: none !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        /* rất quan trọng */
+        .navbar .dropdown>.dropdown-menu {
+            left: 12px;
+        }
+
+        /* chỉnh số theo ý muốn */
+    }
+
+    /* ==== ABOUT (giống web mẫu) ==== */
+    .about-section {
+        padding-block: 48px;
+    }
+
+    .about-row {
+        --radius: 8px;
+    }
+
+    .about-hero {
+        position: relative;
+        height: 650px;
+        /* bạn có thể chỉnh 480–560 */
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+
+    .about-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.75);
+        /* làm tối ảnh để chữ nổi bật */
+    }
+
+    .about-hero .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 56px;
+        color: #fff;
+    }
+
+    .about-hero h2 {
+        font-size: clamp(32px, 4vw, 56px);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 28px;
+    }
+
+    /* Nút "XEM NGAY" – hiệu ứng quét mất nền trắng từ trái sang phải */
+    .btn-wipe {
+        display: inline-block;
+        padding: 12px 28px;
+        font-weight: 700;
+        width: 150px;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        border: 1.5px solid #fff;
+        color: black;
+        border-radius: 8px;
+        /* nền trắng – phủ toàn bộ, bám bên trái */
+        background: linear-gradient(#fff, #fff) left / 100% 100% no-repeat;
+        transition: background-size .5s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .btn-wipe:hover {
+        /* thu hẹp nền về 0% từ trái -> phải */
+        background-size: 0% 100%;
+        color: #fff;
+        /* chữ vẫn trắng */
+        border-color: #fff;
+    }
+
+    /* Cột nội dung bên phải */
+    .about-content {
+        background: #fff;
+        padding: 24px 28px 24px 40px;
+    }
+
+    .about-content p {
+        color: #60696f;
+    }
+
+    /* Mobile */
+    @media (max-width: 991.98px) {
+        .about-hero {
+            height: 420px;
+        }
+
+        .about-hero .overlay {
+            padding: 32px;
+            align-items: flex-start;
+        }
+
+        .about-content {
+            padding: 24px;
+        }
+    }
+
+    .about-section .btn-wipe,
+    .about-section .btn-wipe:hover,
+    .about-section .btn-wipe:focus,
+    .about-section .btn-wipe:active,
+    .about-section .btn-wipe:visited {
+        text-decoration: none;
+    }
+}
